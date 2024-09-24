@@ -15,6 +15,20 @@ TEST_CASE("Arena") {
 	CHECK(idk != nullptr);
 	CHECK((size_t)idk % 8 == 0);
 
+	SUBCASE("Not enough space") {
+		void* test = malloc(sizeof(arn::Arena) - 1);
+		arn::Arena* t2 = arn::createArena(test, sizeof(arn::Arena) - 1);
+		CHECK(t2 == nullptr);
+		free(test);
+	}
+
+	SUBCASE("too large") {
+		const size_t currentSize = arena.size;
+		void* test = arena.alloc(10000000);
+		CHECK(test == nullptr);
+		CHECK(arena.size == currentSize);
+	}
+
 	SUBCASE("clear") {
 		arena.clear();
 		CHECK(arena.size == 0);

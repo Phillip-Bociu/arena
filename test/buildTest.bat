@@ -1,2 +1,2 @@
-@clang++ --coverage test.cpp -o test.exe -g
+@g++ --coverage test.cpp -o test.exe -g
 
