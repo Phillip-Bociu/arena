@@ -1,2 +1,2 @@
-@g++ --coverage test.cpp -o test.exe -g
+@g++ --coverage -pedantic -Wall test.cpp -o test.exe -g
 

@@ -1,6 +1,5 @@
 #pragma once
 #include <cstdint>
-#include <mutex>
 
 /*==================================
 				Macros
@@ -35,6 +34,8 @@ namespace arn {
 				I hate them too, but I want this
 				to be approved at work
 	  ==================================*/
+
+	struct Arena;
 	struct NODISCARD ScopeExit {
 			~ScopeExit();
 

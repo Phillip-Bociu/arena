@@ -4,7 +4,6 @@
 
 #include "doctest.h"
 #include "../Arena.hpp"
-#include <thread>
 
 TEST_CASE("Arena") {
 	arn::Arena& arena = *arn::allocArena(1024);
@@ -53,6 +52,7 @@ TEST_CASE("Arena") {
 		{
 			arn::ScopeExit se = arena.restoreToCurrentSizeOnScopeExit();
 			void* testAlloc = arena.alloc(100);
+			(void)testAlloc;
 		}
 		CHECK(arena.size == currentSize);
 	}
